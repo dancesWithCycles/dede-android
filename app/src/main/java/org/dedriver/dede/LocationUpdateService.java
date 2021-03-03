@@ -1,6 +1,5 @@
 package org.dedriver.dede;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -10,21 +9,17 @@ import android.app.Service;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.IBinder;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 
-import java.text.SimpleDateFormat;
+import org.dedriver.dede.activity.MainActivity;
 
 import timber.log.Timber;
-
-import static org.dedriver.dede.MainActivity.gpsLocation;
 
 public class LocationUpdateService extends Service {
     public final static int NOTIFICATION_ID = 1001;
@@ -32,7 +27,6 @@ public class LocationUpdateService extends Service {
     private static GpsLocationListener gpsLocationListener = null;
     private LocationManager locationManager = null;
 
-    @SuppressLint("MissingPermission")
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
@@ -41,31 +35,30 @@ public class LocationUpdateService extends Service {
         createNotificationChannel();
         startForeground(NOTIFICATION_ID, getNotification());
 
-        /*check permission*/
-        if (ActivityCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission
-                (this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                && checkBackgroundLocation()) {
-            gpsLocationListener = new GpsLocationListener(this);
-            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            if (locationManager != null) {
-                if (isLocationEnabled()) {
-                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 0, gpsLocationListener);
-                } else {
-                    Timber.w("onStartCommand: location is disabled");
-                    Toast.makeText(this, "location is disabled", Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                Timber.w("onStartCommand: GPS service unavailable");
-                Toast.makeText(this, "GPS service unavailable", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            Timber.w("onStartCommand: permissions not granted");
-        }
+        enableLocationUpdate();
 
         /*todo What is the different between the following return values? */
         return START_STICKY;
         /*return super.onStartCommand(intent, flags, startId);*/
+    }
+
+    @SuppressLint("MissingPermission")
+    private void enableLocationUpdate() {
+        Timber.d("enableLocationUpdate started");
+        gpsLocationListener = new GpsLocationListener(this);
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (locationManager != null) {
+            if (isLocationEnabled()) {
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 0, gpsLocationListener);
+            } else {
+                Timber.w("onStartCommand: location is disabled");
+                Toast.makeText(this, "location is disabled", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Timber.w("onStartCommand: GPS service unavailable");
+            Toast.makeText(this, "GPS service unavailable", Toast.LENGTH_SHORT).show();
+        }
+        Timber.d("enableLocationUpdate finished");
     }
 
     public Notification getNotification() {
@@ -73,28 +66,12 @@ public class LocationUpdateService extends Service {
         PendingIntent pendingIntent = PendingIntent.getActivity(this,
                 0, notificationIntent, 0);
 
-        NotificationCompat.Builder notification;
-        if (gpsLocation != null) {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MMM/yyyy HH:mm:ss z");
-            String stringDate = simpleDateFormat.format(gpsLocation.getTime());
-            Timber.d("date: %s", stringDate);
-            notification = new NotificationCompat.Builder(this, "RunLocation")
-                    .setContentTitle("Dede")
-                    .setContentText("GPS-Zeitstempel: " + stringDate)
-                    .setSmallIcon(R.mipmap.ic_launcher)
-                    .setContentIntent(pendingIntent);
-        } else {
-            notification = new NotificationCompat.Builder(this, "RunLocation")
-                    .setContentTitle("Dede")
-                    .setContentText("Daten nicht verfügbar")
-                    .setSmallIcon(R.mipmap.ic_launcher)
-                    .setContentIntent(pendingIntent);
-        }
+        NotificationCompat.Builder notification = new NotificationCompat.Builder(this, "RunLocation")
+                .setContentTitle("Dede")
+                .setContentText("Die Dede App erfasst GPS-Daten.")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentIntent(pendingIntent);
         return notification.build();
-    }
-
-    public void launchNotification() {
-        notificationManager.notify(NOTIFICATION_ID, getNotification());
     }
 
     private void createNotificationChannel() {
@@ -128,15 +105,6 @@ public class LocationUpdateService extends Service {
 
     private boolean isLocationEnabled() {
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-    }
-
-    public boolean checkBackgroundLocation() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            return ActivityCompat.checkSelfPermission(getApplicationContext(),
-                    Manifest.permission.ACCESS_BACKGROUND_LOCATION) == PackageManager.PERMISSION_GRANTED;
-        } else {
-            return true;
-        }
     }
 
     @Nullable

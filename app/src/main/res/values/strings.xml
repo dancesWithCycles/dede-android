@@ -27,9 +27,9 @@
     <string name="pref_server_port_title">Port</string>
     <string name="pref_server_port_dialog_title">Bitte Serverport eingeben.</string>
 
-    <string name="pref_server_route_default">/postdata</string>
-    <string name="pref_server_route_key">path</string>
-    <string name="pref_server_route_title">Pfad</string>
+    <string name="pref_server_route_default">postdata</string>
+    <string name="pref_server_route_key">route</string>
+    <string name="pref_server_route_title">Route</string>
     <string name="pref_server_route_dialog_title">Bitte Serverpfad eingeben.</string>
 
     <string name="pref_cat_screen">Anzeige</string>

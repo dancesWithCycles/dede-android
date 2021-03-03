@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.dedriver.dede"
-    android:versionCode="2"
-    android:versionName="0.0.4">
+    android:versionCode="4"
+    android:versionName="0.0.8">
 
     <!--Apps that target Android 9 (API level 28) or higher and use foreground services must request the FOREGROUND_SERVICE permission.-->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
@@ -19,16 +19,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dede">
         <activity
-            android:name=".SettingsActivity"
+            android:name=".activity.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".activity.MainActivity">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activity.MainActivity" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,9 +40,6 @@
         <service
             android:name=".LocationUpdateService"
             android:foregroundServiceType="location" />
-        <uses-library
-            android:name="org.apache.http.legacy"
-            android:required="false" />
     </application>
 
 </manifest>

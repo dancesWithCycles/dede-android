@@ -1,10 +1,12 @@
-package org.dedriver.dede;
+package org.dedriver.dede.activity;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
+
+import org.dedriver.dede.R;
 
 public class SettingsActivity extends AppCompatActivity {
 

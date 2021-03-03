@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
+import org.dedriver.dede.activity.MainActivity;
+
 import timber.log.Timber;
 
 public class GpsLocationListener implements LocationListener {
@@ -17,11 +19,9 @@ public class GpsLocationListener implements LocationListener {
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
-//        Timber.d("location: %s",location);
         MainActivity.gpsLocation = location;
         //update UI
         MainActivity.updateLocation();
-        this.locationUpdateService.launchNotification();
     }
 
     @Override
