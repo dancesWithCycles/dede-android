@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">Dede</string>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="action_settings">Einstellungen</string>
+
+    <string name="pref_cat_general">Allgemein</string>
+
+    <string name="pref_alias_default">Dede</string>
+    <string name="pref_alias_key">alias</string>
+    <string name="pref_alias_title">Alias</string>
+    <string name="pref_alias_dialog_title">Bitte Alias für Benutzer eingeben.</string>
+
+    <string name="pref_vehicle_default">7</string>
+    <string name="pref_vehicle_key">vehicle</string>
+    <string name="pref_vehicle_title">Verkehrsmittel</string>
+    <string name="pref_vehicle_dialog_title">Bitte Verkehrsmittel auswählen.</string>
+
+    <string name="pref_cat_server_config">Serverkonfiguration</string>
+
+    <string name="pref_server_address_default">https://dedriver.org</string>
+    <string name="pref_server_address_key">address</string>
+    <string name="pref_server_address_title">Adresse</string>
+    <string name="pref_server_address_dialog_title">Bitte Serveradresse eingeben.</string>
+
+    <string name="pref_server_port_default">42001</string>
+    <string name="pref_server_port_key">port</string>
+    <string name="pref_server_port_title">Port</string>
+    <string name="pref_server_port_dialog_title">Bitte Serverport eingeben.</string>
+
+    <string name="pref_server_route_default">/postdata</string>
+    <string name="pref_server_route_key">path</string>
+    <string name="pref_server_route_title">Pfad</string>
+    <string name="pref_server_route_dialog_title">Bitte Serverpfad eingeben.</string>
+
+    <string name="pref_cat_screen">Anzeige</string>
+    <string name="pref_text_size_title">Textgröße</string>
+    <string name="pref_text_size_key" translatable="false">size</string>
+    <string name="pref_text_size_default" translatable="false">23</string>
+
+    <string name="text_view_id_text">Identifier: </string>
+    <string name="text_view_gps_lat_text">GPS Breitengrad: </string>
+    <string name="text_view_gps_lon_text">GPS Längengrad: </string>
+    <string name="text_view_gps_ts_text">GPS Zeitstempel: </string>
+    <string name="text_view_http_post_ts_text">HTTP POST Zeitstempel: </string>
+
+    <string name="button_view_start">Start</string>
+
+    <!-- Preference Titles -->
+
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+</resources>

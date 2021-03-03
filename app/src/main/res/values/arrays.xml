@@ -1,0 +1,22 @@
+<resources>
+    <string-array name="pref_vehicle_entries">
+        <item name="bus">Bus</item>
+        <item name="car">Auto</item>
+        <item name="train">Zug</item>
+        <item name="tram">Tram</item>
+        <item name="taxi">Taxi</item>
+        <item name="parcelservice">Paketdienst</item>
+        <item name="deliveryservice">Lieferservice</item>
+        <item name="other">Sonstige</item>
+    </string-array>
+    <string-array name="pref_vehicle_entryValues">
+        <item name="bus">0</item>
+        <item name="car">1</item>
+        <item name="train">2</item>
+        <item name="tram">3</item>
+        <item name="taxi">4</item>
+        <item name="parcelservice">5</item>
+        <item name="deliveryservice">6</item>
+        <item name="other">7</item>
+    </string-array>
+</resources>

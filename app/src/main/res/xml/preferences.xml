@@ -1,0 +1,56 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/pref_cat_general">
+        <!--dede alias-->
+        <EditTextPreference
+            app:defaultValue="@string/pref_alias_default"
+            app:dialogTitle="@string/pref_alias_dialog_title"
+            app:key="@string/pref_alias_key"
+            app:title="@string/pref_alias_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="@string/pref_vehicle_default"
+            app:key="@string/pref_vehicle_key"
+            app:title="@string/pref_vehicle_title"
+            app:useSimpleSummaryProvider="true"
+            app:entries="@array/pref_vehicle_entries"
+            app:entryValues="@array/pref_vehicle_entryValues"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/pref_cat_server_config">
+        <!--dede address-->
+        <EditTextPreference
+            app:defaultValue="@string/pref_server_address_default"
+            app:dialogTitle="@string/pref_server_address_dialog_title"
+            app:key="@string/pref_server_address_key"
+            app:title="@string/pref_server_address_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <!--dede port-->
+        <EditTextPreference
+            app:defaultValue="@string/pref_server_port_default"
+            app:dialogTitle="@string/pref_server_port_dialog_title"
+            app:key="@string/pref_server_port_key"
+            app:title="@string/pref_server_port_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <!--        todo-->
+        <!--        <DialogPreference-->
+        <!--            app:dialogTitle="Serverkonfiguration auf Werkseinstellung zurück setzen?"-->
+        <!--            app:key="reset"-->
+        <!--            app:summary="Serverkonfiguration zurück setzen"/>-->
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/pref_cat_screen">
+        <EditTextPreference
+            app:defaultValue="@string/pref_text_size_default"
+            app:key="@string/pref_text_size_key"
+            app:title="@string/pref_text_size_title"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
