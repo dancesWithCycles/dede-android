@@ -17,12 +17,12 @@
 
     <string name="pref_cat_server_config">Serverkonfiguration</string>
 
-    <string name="pref_server_address_default">https://dedriver.org</string>
+    <string name="pref_server_address_default">https://dede.swingbe.de</string>
     <string name="pref_server_address_key">address</string>
     <string name="pref_server_address_title">Adresse</string>
     <string name="pref_server_address_dialog_title">Bitte Serveradresse eingeben.</string>
 
-    <string name="pref_server_port_default">42001</string>
+    <string name="pref_server_port_default">65525</string>
     <string name="pref_server_port_key">port</string>
     <string name="pref_server_port_title">Port</string>
     <string name="pref_server_port_dialog_title">Bitte Serverport eingeben.</string>
